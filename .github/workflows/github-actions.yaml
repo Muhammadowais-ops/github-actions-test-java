@@ -1,0 +1,19 @@
+name: GitHub Actions Demo
+run-name: sample testing
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: ["11","17"]
+    steps:
+      - name: Checking out
+        uses: actions/checkout@v4
+      - name: Java JDK for compilation
+        uses: actions/setup-java@v4
+        with:
+          java-version: {{matrix.java-version}}
+        cache: maven
+      - name: Maven running
+        run: mvn clean install
