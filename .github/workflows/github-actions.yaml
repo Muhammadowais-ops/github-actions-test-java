@@ -13,7 +13,7 @@ jobs:
       - name: Java JDK for compilation
         uses: actions/setup-java@v4
         with:
-          java-version: '{{ matrix.java-version }}'
+          java-version: {{ matrix.java-version }}
           distribution: 'temurin'
           cache: 'maven'
       - name: Maven running
