@@ -18,3 +18,13 @@ jobs:
           cache: 'maven'
       - name: Maven running
         run: mvn clean install
+
+  publish-build:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Archive Jar
+        uses: actions/upload-artifact@v4
+        with:
+          name: testing
+          path: target/javaparser-maven-sample-1.0-SNAPSHOT-shaded.jar
